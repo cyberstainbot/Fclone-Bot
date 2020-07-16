@@ -38,7 +38,7 @@ def restricted_private(func):
             logger.info('Unauthorized access denied for private messages {} {}.'
                         .format(update.effective_user.full_name, user_id))
             if chat_id < 0:
-                rsp = update.message.reply_text('仅限私聊哦！')
+                rsp = update.message.reply_text('Private chat only!')
                 rsp.done.wait(timeout=60)
                 message_id = rsp.result().message_id
                 context.job_queue.run_once(callback_delete_message, config.TIMER_TO_DELETE_MESSAGE,

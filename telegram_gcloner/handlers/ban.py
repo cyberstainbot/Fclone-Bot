@@ -37,7 +37,7 @@ def ban(update: Update, context: CallbackContext):
         new_ban.append(user_id)
         context.bot_data['ban'] = new_ban
     else:
-        update.message.reply_text('已存在于黑名单。')
+        update.message.reply_text('Already exists on the blacklist.')
         return
     context.dispatcher.update_persistence()
     tasks = thread_pool.get(user_id, None)
@@ -46,7 +46,7 @@ def ban(update: Update, context: CallbackContext):
             t.kill()
             logger.debug('Task {} was stopped due to user {} is banned.'.format(t.ident, user_id))
             break
-    update.message.reply_text('已添加至黑名单。')
+    update.message.reply_text('Added to the blacklist.')
     logger.info('{} is banned.'.format(user_id))
     return
 
@@ -62,9 +62,9 @@ def unban(update: Update, context: CallbackContext):
         new_ban.remove(user_id)
         context.bot_data['ban'] = new_ban
         context.dispatcher.update_persistence()
-        update.message.reply_text('已移出在黑名单。')
+        update.message.reply_text('Removed from the blacklist.')
         logger.info('{} is unbanned.'.format(user_id))
         return
     else:
-        update.message.reply_text('该用户不在黑名单。')
+        update.message.reply_text('The user is not on the blacklist.')
         return

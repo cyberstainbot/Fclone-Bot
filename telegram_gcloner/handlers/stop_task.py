@@ -26,7 +26,7 @@ def stop_task(update, context):
             (not query.message.reply_to_message or
              query.from_user.id != query.message.reply_to_message.from_user.id):
         alert_users(context, update.effective_user, 'invalid caller', query.data)
-        query.answer(text='哟呵', show_alert=True)
+        query.answer(text='Yo-he!', show_alert=True)
         return
     if query.data:
         match = re.search(regex_stop_task, query.data)
@@ -40,5 +40,5 @@ def stop_task(update, context):
                         logger.info('User {} has stopped task {}'.format(query.from_user.id, thread_id))
                         return
     alert_users(context, update.effective_user, 'invalid query data', query.data)
-    query.answer(text='哟呵', show_alert=True)
+    query.answer(text='Yo-he!', show_alert=True)
     return

@@ -18,9 +18,9 @@ def init(dispatcher: Dispatcher):
 
 @restricted
 def start(update, context):
-    rsp = update.message.reply_text('先私聊上传包含SA文件的ZIP压缩包，并在标题填写 /sa\n'
-                                    '再 /folders 设置收藏的文件夹。\n'
-                                    '随后转发或直接发送带有google drive链接的内容即可。')
+    rsp = update.message.reply_text('Upload a ZIP archive containing SA files in a private message first, and add /sa to the subject.\n'
+                                    'After that, use /folders to set destination folders.\n'
+                                    'Now just forward or send a Google Drive link.')
     rsp.done.wait(timeout=60)
     message_id = rsp.result().message_id
     if update.message.chat_id < 0:

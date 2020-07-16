@@ -18,13 +18,13 @@ def init(dispatcher: Dispatcher):
 
 @restricted
 def get_help(update, context):
-    message = '发送google drive链接，或者转发带有google drive的信息即可手动转存。\n' \
-              '需要使用 /sa 和 /folders 进行配置\n\n' \
-              '以下是本BOT的命令：\n\n' \
-              '/folders - 设置收藏文件夹\n' \
-              '/sa - 仅限私聊，上传包含sa的ZIP文件夹，在标题写上/sa设置Service Account\n' \
-              '/4999baoyue - 仅限私聊，商业洽谈，请附上留言\n' \
-              '/help - 输出本帮助\n'
+    message = 'Send a Google Drive link, or forward a message with a Google Drive link to manually transfer.\n' \
+              'Configuration with /sa and /folders is required.\n\n' \
+              'Commands:\n\n' \
+              '/folders - Set favorite folders\n' \
+              '/sa - Private chat only, upload a ZIP containing SA accounts with this command as the subject.\n' \
+              #'/4999baoyue - Private chat only, business discussion only, please attach message\n' \
+              '/help - Output this message\n'
     rsp = update.message.reply_text(message)
     rsp.done.wait(timeout=60)
     message_id = rsp.result().message_id

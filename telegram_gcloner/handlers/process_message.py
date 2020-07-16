@@ -43,7 +43,7 @@ def ignore_callback(update, context):
 def get_warning(update, context):
     query = update.callback_query
     alert_users(context, update.effective_user, 'unknown query data', query.data)
-    query.answer(text='哟呵', show_alert=True)
+    query.answer(text='Yo-he!', show_alert=True)
 
 
 def leave_from_chat(update, context):

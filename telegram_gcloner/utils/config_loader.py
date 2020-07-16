@@ -22,7 +22,7 @@ class _Config:
         self._gclone_para_override = ''
         self._base_path = os.path.dirname(os.path.dirname(__file__))
         self.TIMER_TO_DELETE_MESSAGE = 10
-        self.AD_STRING = '再了个见，请<a href="{}">私聊本机器人</a>。'
+        self.AD_STRING = 'Goodbye, please talk to the bot<a href="{}">privately.</a>'
 
     def load_config(self):
         logger.debug('Loading config')

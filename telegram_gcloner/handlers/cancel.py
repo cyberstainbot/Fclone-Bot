@@ -22,7 +22,7 @@ def cancel(update, context):
             (not query.message.reply_to_message or
              query.from_user.id != query.message.reply_to_message.from_user.id):
         alert_users(context, update.effective_user, 'invalid caller', query.data)
-        query.answer(text='哟呵', show_alert=True)
+        query.answer(text='Yo-he!', show_alert=True)
         return
     # query.message.edit_reply_markup(reply_markup=None)
     query.message.delete()

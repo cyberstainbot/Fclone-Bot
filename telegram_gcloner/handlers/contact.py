@@ -32,7 +32,7 @@ def contact(update, context):
                                     from_chat_id=update.message.chat_id,
                                     message_id=update.message.message_id)
         logger.info('{} ({}) left a message: {}'.format(update.effective_user.name, update.effective_user.id, text))
-        rsp = update.message.reply_text('收到。')
+        rsp = update.message.reply_text('Roger that.')
         rsp.done.wait(timeout=60)
         message_id = rsp.result().message_id
         if update.message.chat_id < 0:
@@ -41,7 +41,7 @@ def contact(update, context):
             context.job_queue.run_once(callback_delete_message, config.TIMER_TO_DELETE_MESSAGE,
                                        context=(update.message.chat_id, update.message.message_id))
     else:
-        rsp = update.message.reply_text('这么害羞，不说点啥？\n' +
+        rsp = update.message.reply_text('You\'re so shy, don\'t you want to say anything?\n' +
                                         config.AD_STRING.format(context.bot.username),
                                         ParseMode.HTML)
         rsp.done.wait(timeout=60)

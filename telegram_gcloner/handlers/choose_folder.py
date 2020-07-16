@@ -42,7 +42,7 @@ def chosen_folder(update, context):
             (not query.message.reply_to_message or
              query.from_user.id != query.message.reply_to_message.from_user.id):
         alert_users(context, update.effective_user, 'invalid caller', query.data)
-        query.answer(text='哟呵', show_alert=True)
+        query.answer(text='Yo-he!', show_alert=True)
         return
     if update.effective_user.id in config.USER_IDS\
             or (context.bot_data.get('vip', None) and update.effective_user.id in context.bot_data['vip']):
@@ -56,7 +56,7 @@ def chosen_folder(update, context):
         gd = GoogleDrive(update.effective_user.id)
     except Exception as e:
         context.bot.send_message(chat_id=update.effective_user.id,
-                                 text='请确认SA已正确上传，并配置收藏文件夹。\n'
+                                 text='Please make sure the SA archive has been uploaded and the collection folder has been configured.\n'
                                       '<code>{}</code>'.format(html.escape(str(e))),
                                  parse_mode=ParseMode.HTML)
         return
@@ -65,7 +65,7 @@ def chosen_folder(update, context):
     match = re.search(r'^{},(?P<folder_id>[\dA-Za-z\-_]+)$'.format(callback_query_prefix), query.data)
     if not match:
         alert_users(context, update.effective_user, 'invalid query', query.data)
-        query.answer(text='哟呵', show_alert=True)
+        query.answer(text='Yo-he!', show_alert=True)
         return
     folder_id = match.group('folder_id')
 
@@ -78,7 +78,7 @@ def chosen_folder(update, context):
         current_path_list = gd.get_file_path_from_id(folder_id)
         if not current_path_list:
             alert_users(context, update.effective_user, 'invalid folder id', query.data)
-            query.answer(text='哟呵', show_alert=True)
+            query.answer(text='Yo-he!', show_alert=True)
             return
         current_path_list.reverse()
         new_fav_folders[folder_id] = {
@@ -90,7 +90,7 @@ def chosen_folder(update, context):
         context.dispatcher.update_persistence()
         set_folders(update, context)
     else:
-        query.answer(text='最多只能{}个'.format(max_folders), show_alert=True)
+        query.answer(text='Maximum {}'.format(max_folders), show_alert=True)
     return
 
 
@@ -103,7 +103,7 @@ def choose_folder(update, context):
         gd = GoogleDrive(update.effective_user.id)
     except Exception as e:
         context.bot.send_message(chat_id=update.effective_user.id,
-                                 text='请确认SA已正确上传，并配置收藏文件夹。\n'
+                                 text='Please make sure the SA archive has been uploaded and the collection folder has been configured.\n'
                                       '<code>{}</code>'.format(html.escape(str(e))),
                                  parse_mode=ParseMode.HTML)
         return
@@ -117,7 +117,7 @@ def choose_folder(update, context):
             folders = gd.get_drives()
             current_folder_id = ''
             context.bot.send_message(chat_id=update.effective_user.id,
-                                     text='错误：\n<code>{}</code>'.format(html.escape(str(e))),
+                                     text='Error：\n<code>{}</code>'.format(html.escape(str(e))),
                                      parse_mode=ParseMode.HTML)
 
     callback_query_prefix = 'choose_folder'
@@ -125,7 +125,7 @@ def choose_folder(update, context):
     page = None
     message_id = -1
     if not query:
-        rsp = update.message.reply_text('获取目录...')
+        rsp = update.message.reply_text('Getting directory...')
         rsp.done.wait(timeout=60)
         message_id = rsp.result().message_id
         if not folders:
@@ -138,7 +138,7 @@ def choose_folder(update, context):
                 (not query.message.reply_to_message or
                  query.from_user.id != query.message.reply_to_message.from_user.id):
             alert_users(context, update.effective_user, 'invalid caller', query.data)
-            query.answer(text='哟呵', show_alert=True)
+            query.answer(text='Yo-he!', show_alert=True)
             return
         message_id = query.message.message_id
         match = re.search(r'^(?P<un>un)?{}(?P<replace>_replace)?(?:_page#(?P<page>\d+))?'
@@ -155,11 +155,11 @@ def choose_folder(update, context):
                     folders = gd.get_drives()
                     current_folder_id = ''
                     context.bot.send_message(chat_id=update.effective_user.id,
-                                             text='错误：\n<code>{}</code>'.format(html.escape(str(e))),
+                                             text='Error：\n<code>{}</code>'.format(html.escape(str(e))),
                                              parse_mode=ParseMode.HTML)
                 context.user_data[udkey_folders_cache] = copy.deepcopy(folders)
                 if not folders:
-                    folders = {'#': '(无子文件夹)'}
+                    folders = {'#': '(No subfolders)'}
                 match_folder_id_replace = match.group('replace')
                 if match_folder_id_replace:
                     context.user_data[udkey_fav_folders_replace] = match_folder_id
@@ -171,10 +171,10 @@ def choose_folder(update, context):
                 folders = gd.get_drives()
                 context.user_data[udkey_folders_cache] = copy.deepcopy(folders)
             if not folders:
-                folders = {'#': '未收藏团队盘，先收藏才能操作。'}
+                folders = {'#': 'If you have no shared drives, you must get one before you can use this.'}
         else:
             alert_users(context, update.effective_user, 'invalid query data', query.data)
-            query.answer(text='哟呵', show_alert=True)
+            query.answer(text='Yo-he!', show_alert=True)
             return
 
     if not page:
@@ -211,14 +211,14 @@ def choose_folder(update, context):
                     0, [InlineKeyboardButton('📁' + current_path,
                                              callback_data=callback_query_prefix)])
             inline_keyboard_drive_ids.append(
-                [InlineKeyboardButton('选择本文件夹({})'.format(current_folder_name),
+                [InlineKeyboardButton('Select this folder({})'.format(current_folder_name),
                                       callback_data='chosen_folder,{}'.format(current_folder_id))])
-    inline_keyboard_drive_ids.append([InlineKeyboardButton('返回顶层',
+    inline_keyboard_drive_ids.append([InlineKeyboardButton('Return to top',
                                                            callback_data='choose_folder' if current_folder_id else '#'),
-                                      InlineKeyboardButton('取消', callback_data='cancel')])
+                                      InlineKeyboardButton('Cancel', callback_data='cancel')])
     context.bot.edit_message_text(chat_id=update.effective_chat.id,
                                   message_id=message_id,
-                                  text='选择要保存的目录，共{}个子目录'.format(
+                                  text='Select the directory you want to use, there are {} subdirectories.'.format(
                                       folders_len),
                                   reply_markup=InlineKeyboardMarkup(inline_keyboard_drive_ids))
 
@@ -235,7 +235,7 @@ def set_folders(update, context):
     query = update.callback_query
     page = 1
     if not query:
-        rsp = update.message.reply_text('获取团队盘...')
+        rsp = update.message.reply_text('Getting shared drives...')
         rsp.done.wait(timeout=60)
         message_id = rsp.result().message_id
     else:
@@ -243,7 +243,7 @@ def set_folders(update, context):
                 (not query.message.reply_to_message or
                  query.from_user.id != query.message.reply_to_message.from_user.id):
             alert_users(context, update.effective_user, 'invalid caller', query.data)
-            query.answer(text='哟呵', show_alert=True)
+            query.answer(text='Yo-he!', show_alert=True)
             return
         message_id = query.message.message_id
     folder_ids = context.user_data.get(udkey_folders, None)
@@ -263,12 +263,12 @@ def set_folders(update, context):
         inline_keyboard_drive_ids = []
         folder_ids_len = 0
     if folder_ids_len < max_folders:
-        inline_keyboard_drive_ids.insert(0, [InlineKeyboardButton('新增一个收藏文件夹', callback_data=callback_query_prefix)])
-    inline_keyboard_drive_ids.append([InlineKeyboardButton('完成', callback_data='cancel')])
+        inline_keyboard_drive_ids.insert(0, [InlineKeyboardButton('Add favorite folder', callback_data=callback_query_prefix)])
+    inline_keyboard_drive_ids.append([InlineKeyboardButton('Complete', callback_data='cancel')])
 
     context.bot.edit_message_text(chat_id=update.effective_chat.id,
                                   message_id=message_id,
-                                  text='共{}/{}收藏文件夹：'.format(
+                                  text='Total {}/{} Destination Folders：'.format(
                                       folder_ids_len,
                                       max_folders,
                                   ),

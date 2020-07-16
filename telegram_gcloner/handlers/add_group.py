@@ -28,11 +28,11 @@ def add_group(update, context):
             mention_html_from_user = mention_html(update.message.from_user.id,
                                                   html.escape(update.message.from_user.full_name))
             context.bot.send_message(chat_id=update.message.chat_id,
-                                     text='【{}】感谢将本机器人加入本群。{}'
+                                     text='【{}】Thank you for adding this bot to the group.{}'
                                      .format(mention_html_from_user,
                                              config.AD_STRING.format(context.bot.username)),
                                      parse_mode=ParseMode.HTML)
-            context.bot.send_message(chat_id=update.message.chat_id, text='本群未认证，已退群')
+            context.bot.send_message(chat_id=update.message.chat_id, text='This bot is unauthorized to be in this group and has left.')
             message = 'Left unauthorized group: {} ({}). {} {}. {}'.format(
                 update.message.chat.title,
                 update.message.chat_id,
