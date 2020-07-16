@@ -244,7 +244,7 @@ class MySaveFileThread(threading.Thread):
                 message = '{}{}❌\n{}\n{}\n\n'.format(message, message_progress_heading, message_progress_content,
                                                      link_text)
             elif progress_file_percentage == 0 and progress_checked_files > 0:
-                message = '{}{}✅\nExisted\n{}\n\n'.format(message, message_progress_heading, link_text)
+                message = '{}{}✅\nFile already exists!\n{}\n\n'.format(message, message_progress_heading, link_text)
             else:
                 message = '{}{}{}\n{}\n{}\n\n'.format(message,
                                                       message_progress_heading,
