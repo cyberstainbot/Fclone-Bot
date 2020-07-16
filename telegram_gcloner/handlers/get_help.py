@@ -23,7 +23,6 @@ def get_help(update, context):
               'Commands:\n\n' \
               '/folders - Set favorite folders\n' \
               '/sa - Private chat only, upload a ZIP containing SA accounts with this command as the subject.\n' \
-              #'/4999baoyue - Private chat only, business discussion only, please attach message\n' \
               '/help - Output this message\n'
     rsp = update.message.reply_text(message)
     rsp.done.wait(timeout=60)

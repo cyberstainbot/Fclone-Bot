@@ -264,7 +264,7 @@ def set_folders(update, context):
         folder_ids_len = 0
     if folder_ids_len < max_folders:
         inline_keyboard_drive_ids.insert(0, [InlineKeyboardButton('Add favorite folder', callback_data=callback_query_prefix)])
-    inline_keyboard_drive_ids.append([InlineKeyboardButton('Complete', callback_data='cancel')])
+    inline_keyboard_drive_ids.append([InlineKeyboardButton('Done', callback_data='cancel')])
 
     context.bot.edit_message_text(chat_id=update.effective_chat.id,
                                   message_id=message_id,
