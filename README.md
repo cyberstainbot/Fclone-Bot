@@ -46,6 +46,21 @@ If you're interested, you can adjust the permissions in `./utils/restricted.py` 
 3. Send `/folders` to the robot to set up destination folders.
 4. Send or forward a message with a Google Drive link to the bot and follow the prompts.
 
+### Installation On Heroku
+
+1. Clone this repo
+
+2. Create a heroku app and the remote to this repo by using `heroku apps:create "APPNAME"` where APPNAME will be your preferred app anme
+
+3. Make the app a container by using `heroku stack:set container`
+
+4. Do changes on your config.ini
+
+5. Add the changes and commit them (make sure .gitignore doesn't skips your important files which will be need to be pushed to heroku)
+
+6. `git push heroku master`
+
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
