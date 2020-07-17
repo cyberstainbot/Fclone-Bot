@@ -12,14 +12,14 @@ Demo bot：http://t.me/ahzhebot
 1. Install [Python 3.7+（Latest version 3.8.3 recommended）](https://www.python.org/downloads/)
 2. Download [gclone](https://github.com/donwa/gclone/releases) or [fclone (recommended)](https://github.com/mawaya/rclone/releases)
 3. Familiarize yourself with gclone, get the json containing the identity of Service Accounts, and confirm that you can use `gclone` or `fclone` for the operation.
-4. Request a [Telegram Bot](https://core.telegram. org/bots#6-botfather) and get **token**
+4. Request a [Telegram Bot](https://core.telegram.org/bots#6-botfather) and get **token**
 5. Get your own Telegram ID, such as through [this bot](https://t.me/userinfobot)
 
 ### Installation
 
 Download the Zip version or via git clone.
 ```
-$ git clone https://github.com/wrenfairbank/telegram_gcloner
+$ git clone https://github.com/thegreatestminer/telegram_gcloner
 ```
 Installing dependencies via requirements.txt
 ```
@@ -40,7 +40,7 @@ If you're interested, you can adjust the permissions in `./utils/restricted.py` 
 
 ## Run
 
-1. Run `telegram_gcloner.py`。
+1. `python telegram_gcloner.py`。
 2. Upload the ZIP file containing the SA to the bot and fill in `/sa` in the message header.
    - Mobile users can upload the ZIP file first and then reply to the message with `/sa`.
 3. Send `/folders` to the robot to set up destination folders.
