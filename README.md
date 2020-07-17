@@ -1,50 +1,50 @@
 
 # telegram gcloner
 
-一个Telegram机器人，方便手动保存Google Drive资源。如果你有好的想法，欢迎PR。
+A Telegram bot to facilitate manual saving of Google Drive resources. If you have a good idea, PR is welcome.
 
-演示机器人：http://t.me/ahzhebot
+Demo bot：http://t.me/ahzhebot
 
-## 使用方法
+## Usage
 
-### 准备工作
+### Prerequisites
 
-1. 安装 [Python 3.7+（推荐最新版3.8）](https://www.python.org/downloads/)
-2. 下载 [gclone](https://github.com/donwa/gclone/releases) 或者 [fclone（推荐）](https://github.com/mawaya/rclone/releases)
-3. 自行熟悉gclone，并获得包含Service Accounts身份信息的json，确认已可以使用`gclone`或者`fclone`进行相关操作
-4. 申请一个[Telegram Bot](https://core.telegram.org/bots#6-botfather)，并取得 **token**
-5. 获取自己的Telegram ID，比如通过[这个机器人](https://t.me/userinfobot)
+1. Install [Python 3.7+（Latest version 3.8.3 recommended）](https://www.python.org/downloads/)
+2. Download [gclone](https://github.com/donwa/gclone/releases) or [fclone (recommended)](https://github.com/mawaya/rclone/releases)
+3. Familiarize yourself with gclone, get the json containing the identity of Service Accounts, and confirm that you can use `gclone` or `fclone` for the operation.
+4. Request a [Telegram Bot](https://core.telegram. org/bots#6-botfather) and get **token**
+5. Get your own Telegram ID, such as through [this bot](https://t.me/userinfobot)
 
-### 安装
+### Installation
 
-下载Zip版本或者通过git clone下载
+Download the Zip version or via git clone.
 ```
 $ git clone https://github.com/wrenfairbank/telegram_gcloner
 ```
-通过requirements.txt安装依赖
+Installing dependencies via requirements.txt
 ```
 $ pip3 install -r requirements.txt
 ```
-复制`config.ini.example`并更名为`config.ini`
-修改对应的内容，包括：
+Copy `config.ini.example` and rename it to `config.ini`.
+Revise the corresponding content to include.
 
-> path_to_gclone = gclone.exe路径（Linux各发行版如通过安装的方式获取，可不填。Win如已加入path亦可不填。fclone一律需要填写）
+> path_to_gclone = gclone.exe(The path is optional for each distribution of Linux if it is obtained through installation, and optional for Windows if it is in PATH. fclone is always required)
 >
-> telegram_token = telegram机器人token
+> telegram_token = telegram bot token
 >
-> user_ids = 你的telegram id（多个以英文逗号隔开，第一个ID为管理员）
+> user_ids = Your Telegram ID (multiple separated by commas, first ID is admin)
 >
-> gclone_para_override = 如果你不知道这个是什么就留空
+> gclone_para_override = If you don't know what this is, leave it blank.
 
-如有兴趣可调整`./utils/restricted.py`里的权限，默认为只回应`user_ids`里的用户
+If you're interested, you can adjust the permissions in `./utils/restricted.py` to respond only to users in `user_ids` by default.
 
-## 运行
+## Run
 
-1. 运行`telegram_gcloner.py`。
-2. 向机器人上传包含SA的ZIP文件，并在信息标题填写`/sa`。
-   - 手机用户可先上传ZIP文件，再回复该信息`/sa`。
-3. 向机器人发送`/folders`设定常用文件夹。
-4. 向机器人发送或转发带有Google Drive链接的信息，按提示操作。
+1. Run `telegram_gcloner.py`。
+2. Upload the ZIP file containing the SA to the bot and fill in `/sa` in the message header.
+   - Mobile users can upload the ZIP file first and then reply to the message with `/sa`.
+3. Send `/folders` to the robot to set up destination folders.
+4. Send or forward a message with a Google Drive link to the bot and follow the prompts.
 
 ## License
 
