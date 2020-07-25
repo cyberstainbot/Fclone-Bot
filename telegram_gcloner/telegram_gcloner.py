@@ -119,7 +119,7 @@ def main():
     load_handlers(updater.dispatcher)
 
     updater.start_polling()
-    updater.bot.send_message(chat_id=config.USER_IDS[0], text='Telegram gcloner first call, start.')
+    updater.bot.send_message(chat_id=config.USER_IDS[0], text='Hey sexy, Wanna clone some TBs?')
     updater.idle()
 
 
