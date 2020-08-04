@@ -40,7 +40,7 @@ gclone_para_override = Leave it Blank
 
 1. Create one app in Heroku
 2. Push the Files to Heroku using Heroku CLI
-3. Once its done - go to Telegram Bot you create before and Press **Start**
+3. Once its done - go to Telegram Bot you created before and Press **Start**
 4. Upload the **accounts.zip** (we created before) to the bot
 5. Reply to the message with `/sa`
 6. Type /`folders` and set your favourite Folders
