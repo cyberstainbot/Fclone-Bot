@@ -8,7 +8,7 @@
 			"description": "Get from Telegram Botfather"
 		},
 		"USER_ID": {
-			"description": "get from telegram get_id_bot. For More than 1 User Give IDs seperated by ','"
+			"description": "get from telegram get_id_bot. For More than 1 User Give IDs seperated by ','.The First Guy is the Admin"
 		},
 		"GRP_ID": {
 			"description": "Create a Super Group(s) and add ID Here (if More than 1 group Give IDs seperated by ','"
