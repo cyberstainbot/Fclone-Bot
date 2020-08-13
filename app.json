@@ -8,11 +8,10 @@
 			"description": "Get from Telegram Botfather"
 		},
 		"USER_ID": {
-			"description": "get from telegram get_id_bot"
+			"description": "get from telegram get_id_bot. For More than 1 User Give IDs seperated by ','"
 		},
 		"GRP_ID": {
-			"description": "In case if u want to use this bot in a Group",
-			"required": false
+			"description": "Create a Super Group(s) and add ID Here (if More than 1 group Give IDs seperated by ','"
 		},
 		"GC_PARA_OVERRIDE": {
 			"description": "Leave this if u Dont Know",
