@@ -1,7 +1,7 @@
 {
 	"name": "FClone-Bot",
 	"description": "Fclone Telegram Bot",
-	"repository": "https://github.com/Nenokkadine/FClone-Tg-Bot",
+	"repository": "https://github.com/roninuserbot/FClone-Tg-Bot",
 	"keywords": ["Fclone","TG"],
 	"env": {
 		"BOT_TOKEN": {
